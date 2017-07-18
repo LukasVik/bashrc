@@ -1,4 +1,5 @@
 if [ -e ~/.bashrc.sh ]
 then
-    source ~/.bashrc.sh
+  source ~/.bashrc.sh
 fi
+

@@ -1,4 +1,12 @@
 
+#
+# If not running interactively, don't do anything
+#
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
 
 #
 # Set the prompt
@@ -69,7 +77,7 @@ PATH=${PATH}:/c/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o
 #
 if [ -e ~/git_commands.sh ]
 then
-    source ~/git_commands.sh
+  source ~/git_commands.sh
 fi
 
 
@@ -78,7 +86,7 @@ fi
 #
 if [ -e ~/.aliases.sh ]
 then
-    source ~/.aliases.sh
+  source ~/.aliases.sh
 fi
 
 
@@ -87,16 +95,23 @@ fi
 #
 if [ -e ~/.local_aliases.sh ]
 then
-    source ~/.local_aliases.sh
+  source ~/.local_aliases.sh
 fi
 
 
 # 
-# SHELL history
+# Shell history
 #
 HISTCONTROL=ignoreboth:erasedups
 HISTFILESIZE=1000000
 HISTSIZE=1000000
 shopt -s cmdhist
 shopt -s histappend
+
+
+# 
+# Misc settings
+#
+shopt -s globstar
+shopt -s checkwinsize
 

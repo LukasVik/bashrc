@@ -51,7 +51,7 @@ function squash()
     git checkout -b ${branch_name}-squash
   else
     # Not in a git repo
-	return 1
+    return 1
   fi
 }
 
