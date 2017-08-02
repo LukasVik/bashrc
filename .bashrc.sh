@@ -15,7 +15,7 @@ export PROMPT_COMMAND=__prompt_command
 
 function __prompt_command() # Function run after every command
 {
-  local exit_code="$?" # Last exit code (this needs to be first)
+  local exit_code="${?}" # Last exit code (this needs to be first)
   local branch_name=$(get_git_branch)
 
   local reset_color='\[\e[0m\]' # Regular color

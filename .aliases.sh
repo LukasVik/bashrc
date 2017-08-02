@@ -25,7 +25,6 @@ alias co="git checkout"
 
 alias stat="git -p status -uno"
 alias sha="git rev-parse --verify --short HEAD"
-alias wip="git commit -am \"-WIP\""
 alias smu="git submodule update --init --recursive"
 alias amend="git commit -a --amend --no-edit"
 alias log="git log --abbrev-commit --decorate --format=format:'%C(bold blue)%H%C(reset) - %C(dim cyan)%an%C(reset) - %C(white)%s%C(reset) %C(dim white) %C(bold yellow)%d%C(reset)'"
@@ -43,27 +42,34 @@ alias rbmg="rbm && gm"
 alias ag="amend && g"
 alias agm="amend && gm"
 
+function wip()
+{
+  # Make a work-in-progress commit. With or without a describing commit message.
+  if [ ${#} -eq 0 ]
+  then
+    message="WIP"
+  else
+    message="WIP: ${@}"
+  fi
+  git commit -am "${message}"
+}
+
 function squash()
 {
-  # Checkout to squash branch
+  # Checkout to a squash branch
   local branch_name=$(get_git_branch)
-  if [ -n "${branch_name}" ]; then
-    git checkout -b ${branch_name}-squash
-  else
-    # Not in a git repo
-    return 1
-  fi
+  git checkout -b ${branch_name}-squash
 }
 
 function rbl()
 {
   # Rebase local. With or without argument for how many commits to view.
 
-  if [ $# -eq 0 ]
+  if [ ${#} -eq 0 ]
   then
     commit="HEAD~10"
   else
-    commit="HEAD~"$1
+    commit="HEAD~${1}"
   fi
   git rebase -i ${commit}
 }
