@@ -65,33 +65,15 @@ function __prompt_command() # Function run after every command
 
 
 #
-# Set PATH
+# Source the other files of this package
 #
-
-# Add lmutil
-PATH=${PATH}:/c/Xilinx/Vivado/2017.2/bin/unwrapped/win64.o
-
-
-#
-# Git commands
-#
-if [ -e ~/git_commands.sh ]
-then
-  source ~/git_commands.sh
-fi
+THIS_DIR=$(dirname ${BASH_SOURCE})
+source ${THIS_DIR}/git_commands.sh
+source ${THIS_DIR}/aliases.sh
 
 
 #
-# Aliases
-#
-if [ -e ~/.aliases.sh ]
-then
-  source ~/.aliases.sh
-fi
-
-
-#
-# Local aliases
+# Optional local aliases
 #
 if [ -e ~/.local_aliases.sh ]
 then

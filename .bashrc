@@ -1,5 +1,9 @@
-if [ -e ~/.bashrc.sh ]
+BASHRC=/home/lukas/work/repo/bashrc/bashrc.sh
+
+if [ -e ${BASHRC} ]
 then
-  source ~/.bashrc.sh
+  source ${BASHRC}
+else
+  echo "Bashrc file not available: ${BASHRC}"
 fi
 

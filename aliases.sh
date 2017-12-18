@@ -1,11 +1,10 @@
 # General
 alias l="less"
-alias ls="ls --color=auto"
+alias ls="ls --color=auto --ignore=\"*~\""
 alias s="ls"
 alias ll="ls -lh"
 alias py="python -u"
 alias python3="py"
-alias np="/c/Program\ Files\ \(x86\)/Notepad++/notepad++.exe"
 
 
 # git quick commands
@@ -27,13 +26,14 @@ alias stat="git -p status -uno"
 alias sha="git rev-parse --verify --short HEAD"
 alias smu="git submodule update --init --recursive"
 alias amend="git commit -a --amend --no-edit"
-alias log="git log --abbrev-commit --decorate --format=format:'%C(bold blue)%H%C(reset) - %C(dim cyan)%an%C(reset) - %C(white)%s%C(reset) %C(dim white) %C(bold yellow)%d%C(reset)'"
+alias log="git log --abbrev-commit --decorate --format=format:'%C(bold blue)%H%C(reset) - %C(dim cyan)%an%C(reset) - %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)'"
 
 alias rbd="git fetch && git rebase origin/develop"
 alias rbm="git fetch && git rebase origin/master"
+alias rbi="git rebase -i"
 
-alias cod="git fetch && git co origin/develop -B wi-502016-develop"
-alias com="git fetch && git co origin/master -B wi-502016-master"
+alias cod="git fetch && git checkout origin/develop -B develop"
+alias com="git fetch && git checkout origin/master -B master"
 
 alias g="git push origin HEAD:refs/for/develop"
 alias gm="git push origin HEAD:refs/for/master"
@@ -41,6 +41,7 @@ alias rbdg="rbd && g"
 alias rbmg="rbm && gm"
 alias ag="amend && g"
 alias agm="amend && gm"
+
 
 function wip()
 {
@@ -61,6 +62,7 @@ function squash()
   git checkout -b ${branch_name}-squash
 }
 
+
 function rbl()
 {
   # Rebase local. With or without argument for how many commits to view.
@@ -75,11 +77,6 @@ function rbl()
 }
 
 
-# Check modelsim licenses
-alias lic="lmutil.exe lmstat -f msimpevsim"
-alias lrm="lmutil.exe lmremove msimpevsim"
-
-
 # directories
 alias cc="cd .."
 alias ccc="cd ../.."
@@ -92,8 +89,7 @@ alias ccccccc="cd ../../../../../.."
 # Memes
 function yee-func()
 {
-  echo "
-░░░░░░░░░░░░░▄███▄▄▄░░░░░░░
+  echo "░░░░░░░░░░░░░▄███▄▄▄░░░░░░░
 ░░░░░░░░░▄▄▄██▀▀▀▀███▄░░░░░
 ░░░░░░░▄▀▀░░░░░░░░░░░▀█░░░░
 ░░░░▄▄▀░░░░░░░░░░░░░░░▀█░░░
