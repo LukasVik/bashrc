@@ -1,5 +1,5 @@
 # bashrc
-Useful commands, mainly for workin with git.
+Useful commands, mainly for working with git.
 
 ## Usage
 Checkout the repo and copy .bashrc to your $HOME.
