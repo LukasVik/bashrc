@@ -26,7 +26,7 @@ alias stat="git -p status -uno"
 alias sha="git rev-parse --verify --short HEAD"
 alias smu="git submodule update --init --recursive"
 alias amend="git commit -a --amend --no-edit"
-alias log="git log --abbrev-commit --decorate --format=format:'%C(bold blue)%H%C(reset) - %C(dim cyan)%an%C(reset) - %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)'"
+alias log="git log --abbrev-commit --decorate --date=format:'%Y-%m-%d %H:%M' --format=format:'%C(bold blue)%h%C(reset) - %C(dim green)%cd%C(reset) - %C(dim cyan)%an%C(reset) - %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)'"
 
 alias rbd="git fetch && git rebase origin/develop"
 alias rbm="git fetch && git rebase origin/master"
@@ -63,15 +63,15 @@ function squash()
 }
 
 
-function rbl()
+function rb()
 {
-  # Rebase local. With or without argument for how many commits to view.
+  # Rebase, with or without commit argument.
 
   if [ ${#} -eq 0 ]
   then
     commit="HEAD~10"
   else
-    commit="HEAD~${1}"
+    commit=${1}
   fi
   git rebase -i ${commit}
 }
