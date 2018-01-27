@@ -5,12 +5,13 @@ alias s="ls"
 alias ll="ls -lh"
 alias py="python -u"
 alias python3="py"
+alias amke="make"
 
 
 # git quick commands
 if [ -e ~/.git_commands.sh ]
 then
-    source ~/.git_commands.sh
+  source ~/.git_commands.sh
 fi
 
 alias gut="git"
@@ -19,7 +20,6 @@ alias got="git"
 alias branch="git branch"
 alias fetch="git fetch"
 alias rebase="git rebase"
-alias commit="git commit"
 alias co="git checkout"
 
 alias stat="git -p status -uno"
@@ -43,6 +43,14 @@ alias ag="amend && g"
 alias agm="amend && gm"
 
 
+function commit()
+{
+  # Usage: commit My commit message header line
+  message="${@}"
+  git commit -a -m "${message}"
+}
+
+
 function wip()
 {
   # Make a work-in-progress commit. With or without a describing commit message.
@@ -52,8 +60,9 @@ function wip()
   else
     message="WIP: ${@}"
   fi
-  git commit -am "${message}"
+  commit "${message}"
 }
+
 
 function squash()
 {
@@ -66,7 +75,6 @@ function squash()
 function rb()
 {
   # Rebase, with or without commit argument.
-
   if [ ${#} -eq 0 ]
   then
     commit="HEAD~10"
@@ -77,35 +85,10 @@ function rb()
 }
 
 
-# directories
+# Directories
 alias cc="cd .."
 alias ccc="cd ../.."
 alias cccc="cd ../../.."
 alias ccccc="cd ../../../.."
 alias cccccc="cd ../../../../.."
 alias ccccccc="cd ../../../../../.."
-
-
-# Memes
-function yee-func()
-{
-  echo "░░░░░░░░░░░░░▄███▄▄▄░░░░░░░
-░░░░░░░░░▄▄▄██▀▀▀▀███▄░░░░░
-░░░░░░░▄▀▀░░░░░░░░░░░▀█░░░░
-░░░░▄▄▀░░░░░░░░░░░░░░░▀█░░░
-░░░█░░░░░▀▄░░▄▀░░░░░░░░█░░░
-░░░▐██▄░░▀▄▀▀▄▀░░▄██▀░▐▌░░░
-░░░█▀█░▀░░░▀▀░░░▀░█▀░░▐▌░░░
-░░░█░░▀▐░░░░░░░░▌▀░░░░░█░░░
-░░░█░░░░░░░░░░░░░░░░░░░█░░░
-░░░░█░░▀▄░░░░▄▀░░░░░░░░█░░░
-░░░░█░░░░░░░░░░░▄▄░░░░█░░░░
-░░░░░█▀██▀▀▀▀██▀░░░░░░█░░░░
-░░░░░█░░▀████▀░░░░░░░█░░░░░
-░YEE░░█░░░░░░░░░░░░▄█░░░░░░
-░░░░░░░██░░░░░█▄▄▀▀░█░░░░░░
-░░░░░░░░▀▀█▀▀▀▀░░░░░░█░░░░░
-░░░░░░░░░█░░░░░░░░░░░░█░░░░"
-}
-
-alias yee=yee-func
